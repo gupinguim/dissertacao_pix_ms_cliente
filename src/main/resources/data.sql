@@ -1,0 +1,4 @@
+insert into cliente_pessoa_fisica(id,data_cadastro,id_usuario_cadastro,tipo_pessoa,nome,data_nascimento,cpf,doc_identidade, tipo_doc_identidade, local_documento_identidade) values (1,'2020-08-26',1,'Fisica','Joao da Silva Batista','1988-06-05','123.456.789-09','12345678', 'RG', 'SP')
+insert into cliente_pessoa_juridica(id,data_cadastro,id_usuario_cadastro,tipo_pessoa,cnpj,razao_social,nome_fantasia) values (2,'2020-08-26',1,'Juridica','12.345.789/0001-01','Empresa da Maria','Maria LTDA')
+insert into usuario(id,login,data_cadastro,situacao_usuario) values(1,'admin','2020-08-26','Ativo')
+insert into usuario(id,login,data_cadastro,situacao_usuario) values(2,'guest','2020-08-26','Ativo')

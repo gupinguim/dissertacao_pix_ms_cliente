@@ -4,6 +4,8 @@ import com.ipt.dissertacao.ms.cliente.springbootmsclienteservice.entidades.*;
 import com.ipt.dissertacao.ms.cliente.springbootmsclienteservice.repositorios.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,16 +17,18 @@ public class ClienteController {
 	@Autowired
 	ClientePessoaJuridicaRepository pj_repository;
 
-	@GetMapping("/cliente/pessoa_fisica/{id_cliente}")
-	public Cliente GetClientePessoaFisicaById(@PathVariable long id_cliente) {
-		ClientePessoaFisica pf = pf_repository.findById(id_cliente);
-		return pf;
-	}
-
-	@GetMapping("/cliente/pessoa_juridica/{id_cliente}")
-	public Cliente GetClientePessoaJuridicaById(@PathVariable long id_cliente) {
+	@GetMapping("/clientes/{id_cliente}")
+	public ResponseEntity<Cliente> ClienteRecuperar(@PathVariable long id_cliente) {
+		
+		ClientePessoaJuridica pf = pj_repository.findById(id_cliente);
+		if (pf != null)
+			return new ResponseEntity<Cliente>(pf, HttpStatus.OK);
+		
 		ClientePessoaJuridica pj = pj_repository.findById(id_cliente);
-		return pj;
+		if (pj != null)
+			return new ResponseEntity<Cliente>(pj, HttpStatus.OK);
+		else
+			return new ResponseEntity<Cliente>(HttpStatus.NOT_FOUND);
 	}
 
 }

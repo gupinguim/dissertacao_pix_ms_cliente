@@ -55,6 +55,7 @@ public abstract class Cliente {
 		this.idUsuarioCadastro = idUsuarioCadastro;
 		this.tipoPessoa = tipoPessoa;
 	}
+	
 	public Cliente() {
 		super();
 	}

@@ -20,7 +20,7 @@ public class ClienteController {
 	@GetMapping("/clientes/{id_cliente}")
 	public ResponseEntity<Cliente> ClienteRecuperar(@PathVariable long id_cliente) {
 		
-		ClientePessoaJuridica pf = pj_repository.findById(id_cliente);
+		ClientePessoaFisica pf = pf_repository.findById(id_cliente);
 		if (pf != null)
 			return new ResponseEntity<Cliente>(pf, HttpStatus.OK);
 		
